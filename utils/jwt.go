@@ -47,8 +47,16 @@ func VerifyToken(token string) (int64, error) {
 		return 0, errors.New("invalid claims")
 	}
 
-	// email := claims["email"].(string)
-	userId := int64(claims["userId"].(float64))
+	// Check if userId claim exists
+	userIdClaim, exists := claims["userId"]
+	if !exists {
+		return 0, errors.New("userId claim missing")
+	}
 
-	return userId, nil
+	userId, ok := userIdClaim.(float64)
+	if !ok {
+		return 0, errors.New("userId claim invalid type")
+	}
+
+	return int64(userId), nil
 }

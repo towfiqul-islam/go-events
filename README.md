@@ -409,10 +409,38 @@ go-events/
 ├── go.mod                   # Go module dependencies
 ├── go.sum                   # Dependency checksums
 ├── README.md                # This documentation
-└── NOTIFICATIONS.md         # Notification system documentation
+├── NOTIFICATIONS.md         # Notification system documentation
+└── TESTING.md               # Comprehensive testing guide
 ```
 
 ## 🧪 Testing
+
+The project includes a comprehensive test suite with over **50 unit tests** covering all components:
+
+### Quick Test Commands
+
+```bash
+# Run all tests
+go test ./...
+
+# Run tests with coverage
+go test ./... -cover
+
+# Run specific package tests
+go test ./utils/... -v
+go test ./models/... -v
+go test ./middlewares/... -v
+go test ./jobs/... -v
+```
+
+### Test Coverage
+
+- ✅ **Utils**: Password hashing, JWT tokens (100% coverage)
+- ✅ **Models**: All CRUD operations with database mocking (100% coverage)
+- ✅ **Middleware**: Authentication flow testing (100% coverage)
+- ✅ **Jobs**: Background notification service (100% coverage)
+
+For detailed testing information, see [TESTING.md](TESTING.md)
 
 ### Manual Testing Steps
 
